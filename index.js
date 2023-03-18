@@ -14,7 +14,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("home");
+  if(isLoggedIn){
+    res.render("home");
+  }
+  else{
+    res.redirect("/login")
+  }
 });
 
 app.get("/about", (req, res) => {
