@@ -69,6 +69,14 @@ app.post("/signin", async (req, res) => {
         let pass_correct = row.password
         if(pass_correct == password){
           isLoggedIn = true;
+          user.name = row.name
+          user.email = row.email
+          user.phonenumber = row.phonenumber
+          user.username = row.username
+          user.password = row.password
+          user.age = row.age
+          user.gender = row.gender
+          console.log(user);
           res.redirect("/")
         }
         else{
@@ -112,7 +120,16 @@ app.post("/signup", async (req, res) => {
     db.run(
       `insert into account values ("${name}","${email}",${phonenumber},"${username}","${password}",${age},"${gender}")`
     );
+          user.name = req.body.name
+          user.email = req.body.email
+          user.phonenumber = req.body.phonenumber
+          user.username = req.body.username
+          user.password = req.body.password
+          user.age = req.body.age
+          user.gender = req.body.gender
+          console.log(user);
   }
+  isLoggedIn = true;
   res.redirect("/");
 });
 
