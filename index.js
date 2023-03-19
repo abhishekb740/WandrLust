@@ -25,7 +25,7 @@ let user = {
 
 app.get("/", (req, res) => {
   if(isLoggedIn){
-    res.render("home");
+    res.render("home", {name: user.name});
   }
   else{
     res.redirect("/login")
