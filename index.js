@@ -13,6 +13,16 @@ app.set("views", path.join(__dirname, "/views"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let user = {
+  name: "",
+  email: "",
+  phonenumber: 0,
+  username: "",
+  password: "",
+  age: 0,
+  gender: "",
+}
+
 app.get("/", (req, res) => {
   if(isLoggedIn){
     res.render("home");
@@ -40,12 +50,18 @@ app.get("/login", (req, res) => {
 
 let isLoggedIn = false
 
-app.use("/signin", async (req, res) => {
+app.post("/",async(req,res)=>{
+  if(isLoggedIn){
+
+  }
+})
+
+app.post("/signin", async (req, res) => {
   console.log("SignIn");
   console.log(req.body);
   let username = req.body.username;
   let password = req.body.password;
-    db.get(`Select password from account where username = ?`,[username],(err,row)=>{
+    db.get(`Select * from account where username = ?`,[username],(err,row)=>{
       if(err){
         console.log(err.message);
       }
