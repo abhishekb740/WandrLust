@@ -66,7 +66,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
             <div class="container-fluid">
                 <!-- Navbar brand -->
-                <a class="navbar-brand nav-link" target="_self" href="">
+                <a class="navbar-brand nav-link" target="_self" href="https://www.google.co.in">
                     <strong>Wandrlust</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -119,7 +119,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow"
                                 target="_blank">
-                                <i class="fab fa-github"></i>
+                                <i class="fas fa-user-circle"></i>
                             </a>
                         </li>
                     </ul>
@@ -144,14 +144,16 @@
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <div class="text-white text-center">
-                                <h1 class="mb-3">Wandrlust awaits, <%= name%></h1>
+                                <h1 class="mb-3">Wandrlust awaits, <%= name %></h1>
                                 <h5 class="mb-4">Start your journey with us today!</h5>
+                                <!-- <% if( !isLoggedIn ){ %> -->
                                 <a class="btn btn-outline-light btn-lg m-2"
-                                    href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow"
-                                    target="_blank">Sign up</a>
+                                    href="/login" role="button" rel="nofollow"
+                                    target="_self">Sign up</a>
                                 <a class="btn btn-outline-light btn-lg m-2"
-                                    href="https://mdbootstrap.com/docs/standard/" target="_blank" role="button">Log
+                                    href="/login" target="_self" role="button">Log
                                     in</a>
+                                    <!-- <% } %> -->
                             </div>
                         </div>
                     </div>
