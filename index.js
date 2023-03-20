@@ -24,7 +24,7 @@ let user = {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn });
+  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
 });
 
 app.get("/about", (req, res) => {
@@ -36,19 +36,20 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
+  isLoggedIn = false
   res.render("login");
 });
 
-//   app.get("/signup", (req, res) => {
-//     res.render("signup");
-//   });
+app.get("/profile", (req,res) => {
+  res.render("profile")
+})
 
 let isLoggedIn = false
 
-app.post("/", async (req, res) => {
-  if (isLoggedIn) {
-
-  }
+app.post("/logout",(req,res)=>{
+  isLoggedIn = false
+  console.log(isLoggedIn);
+  res.redirect("/")
 })
 
 app.post("/signin", async (req, res) => {
