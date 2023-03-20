@@ -24,12 +24,7 @@ let user = {
 }
 
 app.get("/", (req, res) => {
-  if(isLoggedIn){
-    res.render("home", {name: user.name});
-  }
-  else{
-    res.redirect("/login")
-  }
+  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn });
 });
 
 app.get("/about", (req, res) => {
@@ -50,8 +45,8 @@ app.get("/login", (req, res) => {
 
 let isLoggedIn = false
 
-app.post("/",async(req,res)=>{
-  if(isLoggedIn){
+app.post("/", async (req, res) => {
+  if (isLoggedIn) {
 
   }
 })
@@ -61,29 +56,29 @@ app.post("/signin", async (req, res) => {
   console.log(req.body);
   let username = req.body.username;
   let password = req.body.password;
-    db.get(`Select * from account where username = ?`,[username],(err,row)=>{
-      if(err){
-        console.log(err.message);
+  db.get(`Select * from account where username = ?`, [username], (err, row) => {
+    if (err) {
+      console.log(err.message);
+    }
+    if (row) {
+      let pass_correct = row.password
+      if (pass_correct == password) {
+        isLoggedIn = true;
+        user.name = row.name
+        user.email = row.email
+        user.phonenumber = row.phonenumber
+        user.username = row.username
+        user.password = row.password
+        user.age = row.age
+        user.gender = row.gender
+        console.log(user);
+        res.redirect("/")
       }
-      if(row){
-        let pass_correct = row.password
-        if(pass_correct == password){
-          isLoggedIn = true;
-          user.name = row.name
-          user.email = row.email
-          user.phonenumber = row.phonenumber
-          user.username = row.username
-          user.password = row.password
-          user.age = row.age
-          user.gender = row.gender
-          console.log(user);
-          res.redirect("/")
-        }
-        else{
-          res.send("Incorrect Password!")
-        }
+      else {
+        res.send("Incorrect Password!")
       }
-    })
+    }
+  })
 });
 
 app.post("/signup", async (req, res) => {
@@ -120,17 +115,17 @@ app.post("/signup", async (req, res) => {
     db.run(
       `insert into account values ("${name}","${email}",${phonenumber},"${username}","${password}",${age},"${gender}")`
     );
-          user.name = req.body.name
-          user.email = req.body.email
-          user.phonenumber = req.body.phonenumber
-          user.username = req.body.username
-          user.password = req.body.password
-          user.age = req.body.age
-          user.gender = req.body.gender
-          console.log(user);
+    user.name = req.body.name
+    user.email = req.body.email
+    user.phonenumber = req.body.phonenumber
+    user.username = req.body.username
+    user.password = req.body.password
+    user.age = req.body.age
+    user.gender = req.body.gender
+    console.log(user);
   }
   isLoggedIn = true;
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 app.listen(PORT, (err) => {
