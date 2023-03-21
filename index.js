@@ -50,7 +50,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/profile", (req,res) => {
-  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email, username: user.username, phonenumber: user.phonenumber, age: user.age })
+  res.render("profile", { name: user.name, isLoggedIn: isLoggedIn, email: user.email, username: user.username, phonenumber: user.phonenumber, age: user.age })
 })
 
 app.get("/locations", (req, res) => {
