@@ -1,12 +1,34 @@
 <%- include('partials/navbar.ejs', { name: name, isLoggedIn: isLoggedIn, email: email}); %>
-    <div id='map' style='width: 400px; height: 300px;'></div>
+    <div id='map' style='width: 800px; height: 600px;'></div>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoidmFpYmhhdjA4MDYiLCJhIjoiY2xmaTFxMGc2MDd2bzN5cDJ1d2ExeDBtaSJ9.ksRFszOL1mPE2B0oxLvAJA';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [79.9802, 13.5269], // starting position [lng, lat]
-            zoom: 10, // starting zoom
+            center: [77.5946, 12.9716], // starting position [lng, lat]
+            zoom: 5, // starting zoom
         });
+
+        const marker1 = new mapboxgl.Marker()
+            .setLngLat([77.5946, 12.9716])
+            .setPopup(
+                new mapboxgl.Popup({ offset: 10 })
+                    .setHTML(
+                        `<h6>Bengaluru</h6>
+                        <p>Bengaluru is known as the silicon valley of India</p>`
+                    )
+            )
+            .addTo(map);
+
+        const marker2 = new mapboxgl.Marker()
+            .setLngLat([76.6950, 11.4102])
+            .setPopup(
+                new mapboxgl.Popup({ offset: 10 })
+                    .setHTML(
+                        `<h6>Ooty</h6>
+                        <p>Ooty is a popular hill station</p>`
+                    )
+            )
+            .addTo(map);
     </script>
     <%- include('partials/footer') %>
