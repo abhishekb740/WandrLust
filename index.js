@@ -35,18 +35,23 @@ app.get("/test", (req, res) => {
   res.render("test");
 });
 
+
+app.get("/faq", (req, res) => {
+  res.render("faq", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
+});
+
 app.get("/login", (req, res) => {
   isLoggedIn = false
   res.render("login");
 });
 
-app.get("/profile", (req,res) => {
-  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email})
+app.get("/profile", (req, res) => {
+  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
 })
 
 let isLoggedIn = false
 
-app.post("/logout",(req,res)=>{
+app.post("/logout", (req, res) => {
   isLoggedIn = false
   console.log(isLoggedIn);
   res.redirect("/")
