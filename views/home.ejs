@@ -67,7 +67,7 @@
             <div class="container-fluid">
                 <!-- Navbar brand -->
                 <a class="navbar-brand nav-link" target="_self" href="/">
-                    <strong>Wandrlust</strong>
+                    <strong style="color: #00DDB3;" >Wandrlust</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
                     data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false"
@@ -105,10 +105,10 @@
                             <ul class="dropdown-menu bg-black mt-3" aria-labelledby="dropdownMenuLink">
                                 <a href="/profile" style="text-decoration: none" >
                                     <div class="profile dropdown-item text-white bg-transparent">
-                                        <div>
+                                        <div style="color: #00DDB3;" >
                                             <%=name%>
                                         </div>
-                                        <div>
+                                        <div style="color: #00DDB3;">
                                             <%= email%>
                                         </div>
                                     </div>
@@ -142,7 +142,9 @@
                             <div class="text-white text-center">
                                 <h1 class="mb-3">Wandrlust awaits, 
                                     <% if( isLoggedIn ){ %>
-                                        <%= name %>
+                                        <div style="color: #00DDB3;">
+                                            <%= name %>
+                                        </div>
                                     <% } else{ %>
                                         <div>You</div>
                                         <div>Please Login</div>
