@@ -72,6 +72,25 @@ app.get("/faq", (req, res) => {
   }
 });
 
+app.get("/budget", (req,res)=>{
+  if (isLoggedIn) {
+    res.render("budget", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
+})
+
+
 app.get("/contact", (req, res) => {
   if (isLoggedIn) {
     res.render("contact", {
