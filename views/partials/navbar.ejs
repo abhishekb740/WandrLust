@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-black">
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand nav-link" target="_self" href="/">
+                <strong>Wandrlust</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+                aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" rel="nofollow" target="_blank">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" target="_blank">Contact
+                            Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" target="_blank">About
+                            Us</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav list-inline">
+                    <!-- Icons -->
+                    <% if( isLoggedIn ){ %>
+                        <li class="dropdown nav-item">
+                            <a role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <div>
+                                    <i class="fas fa-user-circle text-decoration-none text-white fa-2x"></i>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu bg-black mt-3" aria-labelledby="dropdownMenuLink">
+                                <a href="/profile" style="text-decoration: none">
+                                    <div class="profile dropdown-item text-white bg-transparent">
+                                        <div>
+                                            <%=name%>
+                                        </div>
+                                        <div>
+                                            <%= email%>
+                                        </div>
+                                    </div>
+                                </a>
+                                <hr width="100%" color="white">
+                                <li><a class="dropdown-item text-white bg-transparent" href="/login">Logout</a></li>
+                            </ul>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
