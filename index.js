@@ -49,6 +49,10 @@ app.get("/profile", (req, res) => {
   res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
 })
 
+app.get("/locations", (req, res) => {
+  res.render("locations", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
+})
+
 let isLoggedIn = false
 
 app.post("/logout", (req, res) => {
