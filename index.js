@@ -21,49 +21,125 @@ let user = {
   password: "",
   age: 0,
   gender: "",
-}
+};
 
 app.get("/", (req, res) => {
-  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email,  });
+  res.render("home", {
+    name: user.name.substring(0, user.name.indexOf(" ")),
+    isLoggedIn: isLoggedIn,
+    email: user.email,
+    username: user.username
+  });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
+  if (isLoggedIn) {
+    res.render("about", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
 });
 
 app.get("/test", (req, res) => {
   res.render("test");
 });
 
-
 app.get("/faq", (req, res) => {
-  res.render("faq", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
+  if (isLoggedIn) {
+    res.render("faq", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
 });
 
-app.get("/contact", (req,res)=>{
-  res.render("contact",{ name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
-})
+app.get("/contact", (req, res) => {
+  if (isLoggedIn) {
+    res.render("contact", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
+});
 
 app.get("/login", (req, res) => {
-  isLoggedIn = false
+  isLoggedIn = false;
   res.render("login");
 });
 
-app.get("/profile", (req,res) => {
-  res.render("profile", { name: user.name, isLoggedIn: isLoggedIn, email: user.email, username: user.username, phonenumber: user.phonenumber, age: user.age })
-})
+app.get("/profile", (req, res) => {
+  if (isLoggedIn) {
+    res.render("profile", {
+      name: user.name,
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username,
+      phonenumber: user.phonenumber,
+      age: user.age,
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
+});
 
 app.get("/locations", (req, res) => {
-  res.render("locations", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
-})
+  if (isLoggedIn) {
+    res.render("locations", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  } else {
+    res.render("home", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username
+    });
+  }
+});
 
-let isLoggedIn = false
+let isLoggedIn = false;
 
 app.post("/logout", (req, res) => {
-  isLoggedIn = false
+  isLoggedIn = false;
   console.log(isLoggedIn);
-  res.redirect("/")
-})
+  res.redirect("/");
+});
 
 app.post("/signin", async (req, res) => {
   console.log("SignIn");
@@ -75,24 +151,23 @@ app.post("/signin", async (req, res) => {
       console.log(err.message);
     }
     if (row) {
-      let pass_correct = row.password
+      let pass_correct = row.password;
       if (pass_correct == password) {
         isLoggedIn = true;
-        user.name = row.name
-        user.email = row.email
-        user.phonenumber = row.phonenumber
-        user.username = row.username
-        user.password = row.password
-        user.age = row.age
-        user.gender = row.gender
+        user.name = row.name;
+        user.email = row.email;
+        user.phonenumber = row.phonenumber;
+        user.username = row.username;
+        user.password = row.password;
+        user.age = row.age;
+        user.gender = row.gender;
         console.log(user);
-        res.redirect("/")
-      }
-      else {
-        res.send("Incorrect Password!")
+        res.redirect("/");
+      } else {
+        res.send("Incorrect Password!");
       }
     }
-  })
+  });
 });
 
 app.post("/signup", async (req, res) => {
@@ -129,13 +204,13 @@ app.post("/signup", async (req, res) => {
     db.run(
       `insert into account values ("${name}","${email}",${phonenumber},"${username}","${password}",${age},"${gender}")`
     );
-    user.name = req.body.name
-    user.email = req.body.email
-    user.phonenumber = req.body.phonenumber
-    user.username = req.body.username
-    user.password = req.body.password
-    user.age = req.body.age
-    user.gender = req.body.gender
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.phonenumber = req.body.phonenumber;
+    user.username = req.body.username;
+    user.password = req.body.password;
+    user.age = req.body.age;
+    user.gender = req.body.gender;
     console.log(user);
   }
   isLoggedIn = true;
