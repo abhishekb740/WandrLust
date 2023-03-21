@@ -24,11 +24,11 @@ let user = {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
+  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email,  });
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
 });
 
 app.get("/test", (req, res) => {
@@ -40,13 +40,17 @@ app.get("/faq", (req, res) => {
   res.render("faq", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
 });
 
+app.get("/contact", (req,res)=>{
+  res.render("contact",{ name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
+})
+
 app.get("/login", (req, res) => {
   isLoggedIn = false
   res.render("login");
 });
 
-app.get("/profile", (req, res) => {
-  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
+app.get("/profile", (req,res) => {
+  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email, username: user.username, phonenumber: user.phonenumber, age: user.age })
 })
 
 app.get("/locations", (req, res) => {
