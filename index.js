@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
 });
 
 app.get("/test", (req, res) => {
@@ -39,6 +39,10 @@ app.get("/test", (req, res) => {
 app.get("/faq", (req, res) => {
   res.render("faq", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
 });
+
+app.get("/contact", (req,res)=>{
+  res.render("contact",{ name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email })
+})
 
 app.get("/login", (req, res) => {
   isLoggedIn = false
