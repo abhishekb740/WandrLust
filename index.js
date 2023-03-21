@@ -41,7 +41,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/profile", (req,res) => {
-  res.render("profile")
+  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email})
 })
 
 let isLoggedIn = false
