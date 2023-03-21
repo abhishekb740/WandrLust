@@ -99,28 +99,28 @@
                     <ul class="navbar-nav list-inline">
                         <!-- Icons -->
                         <% if( isLoggedIn ){ %>
-                        <li class="dropdown nav-item">
-                            <a role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <div>
-                                    <i class="fas fa-user-circle text-decoration-none text-white fa-2x"></i>
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu bg-black mt-3" aria-labelledby="dropdownMenuLink">
-                                <a href="/profile" style="text-decoration: none" >
-                                    <div class="profile dropdown-item text-white bg-transparent">
-                                        <div>
-                                            <%= username%>
-                                        </div>
-                                        <div>
-                                            <%= email%>
-                                        </div>
+                            <li class="dropdown nav-item">
+                                <a role="button" id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <div>
+                                        <i class="fas fa-user-circle text-decoration-none text-white fa-2x"></i>
                                     </div>
                                 </a>
-                                <hr width="100%" color="white">
-                                <li><a class="dropdown-item text-white bg-transparent" href="/login">Logout</a></li>
-                            </ul>
-                        </li>
-                        <% } %>
+                                <ul class="dropdown-menu bg-black mt-3" aria-labelledby="dropdownMenuLink">
+                                    <a href="/profile" style="text-decoration: none">
+                                        <div class="profile dropdown-item text-white bg-transparent">
+                                            <div>
+                                                <%= username%>
+                                            </div>
+                                            <div>
+                                                <%= email%>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <hr width="100%" color="white">
+                                    <li><a class="dropdown-item text-white bg-transparent" href="/login">Logout</a></li>
+                                </ul>
+                            </li>
+                            <% } %>
                     </ul>
                 </div>
             </div>
@@ -149,19 +149,19 @@
                                         <span>
                                             <%= username %>
                                         </span>
-                                    <% } else{ %>
-                                        <div>You</div>
-                                        <div>Please Login</div>
-                                    <% } %>
+                                        <% } else{ %>
+                                            <div>You</div>
+                                            <div>Please Login</div>
+                                            <% } %>
                                 </h1>
                                 <h5 class="mb-4">Start your journey with us today!</h5>
                                 <% if( !isLoggedIn ){ %>
-                                <a class="btn btn-outline-light btn-lg m-2" href="/login" role="button" rel="nofollow"
-                                    target="_self">Sign up</a>
-                                <a class="btn btn-outline-light btn-lg m-2" href="/login" target="_self"
-                                    role="button">Log
-                                    in</a>
-                                <% } %>
+                                    <a class="btn btn-outline-light btn-lg m-2" href="/login" role="button"
+                                        rel="nofollow" target="_self">Sign up</a>
+                                    <a class="btn btn-outline-light btn-lg m-2" href="/login" target="_self"
+                                        role="button">Log
+                                        in</a>
+                                    <% } %>
                             </div>
                         </div>
                     </div>
@@ -174,9 +174,18 @@
                             <div class="text-white text-center">
                                 <h1 class="mb-3">Travel the world, one click at a time</h1>
                                 <h5 class="mb-4">Your ultimate guide to the world's best destinations!</h5>
-                                <a class="btn btn-outline-light btn-lg m-2"
-                                    href="/locations" role="button" rel="nofollow"
-                                    target="_blank">Check locations</a>
+                                <% if( isLoggedIn ){ %>
+                                    <a class="btn btn-outline-light btn-lg m-2" href="/locations" role="button"
+                                        rel="nofollow" target="_blank">Check locations
+                                    </a>
+                                    <% } %>
+                                        <% if( !isLoggedIn ){ %>
+                                            <a class="btn btn-outline-light btn-lg m-2" href="/login" role="button"
+                                                rel="nofollow" target="_self">Sign up</a>
+                                            <a class="btn btn-outline-light btn-lg m-2" href="/login" target="_self"
+                                                role="button">Log
+                                                in</a>
+                                            <% } %>
                             </div>
                         </div>
                     </div>
@@ -195,12 +204,11 @@
                             <div class="text-white text-center">
                                 <h1 class="mb-3">Where adventure meets affordability</h1>
                                 <h5 class="mb-4">Explore more, worry less with our travel expertise</h5>
-                                <a class="btn btn-outline-light btn-lg m-2"
-                                    href="/contact" role="button" rel="nofollow">
+                                <a class="btn btn-outline-light btn-lg m-2" href="/contact" role="button"
+                                    rel="nofollow">
                                     Contact us
                                 </a>
-                                <a class="btn btn-outline-light btn-lg m-2"
-                                    href="/faq" role="button" rel="nofollow">
+                                <a class="btn btn-outline-light btn-lg m-2" href="/faq" role="button" rel="nofollow">
                                     FAQs
                                 </a>
                             </div>

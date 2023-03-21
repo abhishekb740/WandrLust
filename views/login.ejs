@@ -12,50 +12,58 @@
 <body>
     <div class="container">
         <div class="forms-container">
-            <div class="signin-signup">    
+            <div class="signin-signup">
                 <form id="signInForm" class="sign-in-form" method="post" action="/signin">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="username" placeholder="Username" required/>
+                        <input type="text" id="username1" name="username" placeholder="Username" onchange={validateHandleUsername1()} required />
+                        <p style="color: red;" id="error"></p>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="Password" minlength="8" required/>
+                        <input type="password" id="password1" name="password" placeholder="Password" minlength="8"
+                            required />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                 </form>
-                <form id="signUpForm" class="sign-up-form" method="post" action="/signup" >
+                <form id="signUpForm" class="sign-up-form" method="post" action="/signup">
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" id="name" name="name" placeholder="Name" required/>
+                        <input type="text" id="name" name="name" placeholder="Name" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                        <input type="email" id="email" name="email" placeholder="Email"
+                            onchange={validateHandleEmail()} required />
+                        <p style="color: red;" id="error"></p>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="number" id="phonenumber" name="phonenumber" placeholder="Phone Number" minlength="10" maxlength="10" required/>
+                        <input type="number" id="phonenumber" name="phonenumber" placeholder="Phone Number"
+                            minlength="10" maxlength="10" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="username" placeholder="Username" required pattern="[A-Za-z0-9]+"/>
+                        <input type="text" id="username2" name="username" placeholder="Username" required
+                            onchange={validateHandleUsername2()} />
+                        <p style="color: red;" id="error"></p>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" placeholder="Password" required minlength="8"/>
+                        <input type="password" id="password2" name="password" placeholder="Password" required
+                            minlength="8" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="number" id="age" name="age" placeholder="Age" required/>
+                        <input type="number" id="age" name="age" placeholder="Age" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" id="gender" name="gender" placeholder="Gender"/>
+                        <input type="text" id="gender" name="gender" placeholder="Gender" />
                     </div>
-                    <input type="submit" class="btn" value="Sign up" />
+                    <input disabled type="submit" id="Signup" class="btn" value="Sign up" onclick={handleSubmitSignIn()} />
                 </form>
             </div>
         </div>
@@ -88,6 +96,34 @@
         </div>
     </div>
     <script>
+        let regexEmail = /^[A-Za-z0-9_]+@[A-Za-z0-9.-]+$/
+        let regexUsername = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/
+
+        const validateHandleUsername2 = () => {
+            let username = document.getElementById("username2")
+            if(!username.value.match(regexUsername)){
+                alert("Please enter valid username.")
+                username.value = "";
+            }
+        }
+
+        const validateHandleUsername1 = () =>{
+            let username = document.getElementById("username1")
+            if(!username.value.match(regexUsername)){
+                alert("Please enter valid Email.")
+                username.value = "";
+            }
+        }
+
+        const validateHandleEmail = () =>{
+            let email = document.getElementById("email")
+            console.log(email);
+            if(!email.value.match(regexEmail)){
+                alert("Please enter valid Email.")
+                email.value = "";
+            }
+        }
+
         const sign_in_btn = document.querySelector("#sign-in-btn");
         const sign_up_btn = document.querySelector("#sign-up-btn");
         const container = document.querySelector(".container");
