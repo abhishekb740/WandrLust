@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,42 +8,178 @@
     <link href="/PageCss/body.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
     <%- include('partials/navbar.ejs', { name: name, isLoggedIn: isLoggedIn, email: email}); %>
-    <div id='map' style='width: 800px; height: 600px;'></div>
-    <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoidmFpYmhhdjA4MDYiLCJhIjoiY2xmaTFxMGc2MDd2bzN5cDJ1d2ExeDBtaSJ9.ksRFszOL1mPE2B0oxLvAJA';
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/mapbox/streets-v12', // style URL
-            center: [77.5946, 12.9716], // starting position [lng, lat]
-            zoom: 5, // starting zoom
-        });
+        <div id='map' style='width: 100%; height: 500px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoidmFpYmhhdjA4MDYiLCJhIjoiY2xmaTFxMGc2MDd2bzN5cDJ1d2ExeDBtaSJ9.ksRFszOL1mPE2B0oxLvAJA';
+            const map = new mapboxgl.Map({
+                container: 'map', // container ID
+                style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                center: [77.5946, 12.9716], // starting position [lng, lat]
+                zoom: 5, // starting zoom
+            });
 
-        const marker1 = new mapboxgl.Marker()
-            .setLngLat([77.5946, 12.9716])
-            .setPopup(
-                new mapboxgl.Popup({ offset: 10 })
-                    .setHTML(
-                        `<h6>Bengaluru</h6>
+            const marker1 = new mapboxgl.Marker()
+                .setLngLat([77.5946, 12.9716])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Bengaluru</h6>
                         <p>Bengaluru is known as the silicon valley of India</p>`
-                    )
-            )
-            .addTo(map);
+                        )
+                )
+                .addTo(map);
 
-        const marker2 = new mapboxgl.Marker()
-            .setLngLat([76.6950, 11.4102])
-            .setPopup(
-                new mapboxgl.Popup({ offset: 10 })
-                    .setHTML(
-                        `<h6>Ooty</h6>
-                        <p>Ooty is a popular hill station</p>`
-                    )
-            )
-            .addTo(map);
-    </script>
-    <%- include('partials/footer') %>
+            const marker2 = new mapboxgl.Marker()
+                .setLngLat([76.6950, 11.4102])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Ooty</h6>
+                        <p>Ooty is a popular hill station located in the Nilgiri Hills of Tamil Nadu, southern India, known for its scenic beauty, tea gardens, and pleasant weather.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker3 = new mapboxgl.Marker()
+                .setLngLat([79.8083, 11.9416])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Puducherry</h6>
+                        <p>Puducherry is a French Union Territory town bounded by the southeastern Tamil Nadu state.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker4 = new mapboxgl.Marker()
+                .setLngLat([74.1240, 15.2993])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Goa</h6>
+                        <p>Goa is a state in western India which is known for its beautiful beaches, rich history, and unique culture.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker5 = new mapboxgl.Marker()
+                .setLngLat([78.6345, 12.5856])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Yelagiri</h6>
+                        <p>Yelagiri is a popular weekend getaway destination, a small hill station located in the Vellore district of Tamil Nadu</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker6 = new mapboxgl.Marker()
+                .setLngLat([77.5385, 8.0883])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Kanyakumari</h6>
+                        <p>Kanyakumari is a coastal town in the state of Tamil Nadu on India's southern tip.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker7 = new mapboxgl.Marker()
+                .setLngLat([75.7382, 12.4244])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Coorg</h6>
+                        <p>Coorg is a district in the state of Karnataka, known for its coffee plantations, stunning scenery, and rich cultural heritage.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker8 = new mapboxgl.Marker()
+                .setLngLat([78.4867, 17.3850])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Hyderabad</h6>
+                        <p>Hyderabad is a city in southern India, known for its rich history, culture, and cuisine, including the iconic Hyderabadi biryani.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker9 = new mapboxgl.Marker()
+                .setLngLat([78.0373, 15.8281])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Kurnool</h6>
+                        <p>Kurnool is a city in the state of Andhra Pradesh, southern India, known for its rich history, ancient temples, and natural beauty.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker10 = new mapboxgl.Marker()
+                .setLngLat([72.8777, 19.0760])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Mumbai</h6>
+                        <p>Mumbai, also known as the city of dreams, is a bustling metropolis on the west coast of India, famous for its vibrant culture, delicious street food, and iconic landmarks like the Gateway of India</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker11 = new mapboxgl.Marker()
+                .setLngLat([88.3639, 22.5726])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Kolkata</h6>
+                        <p>Kolkata, also known as the City of Joy, is a vibrant metropolis in eastern India, famous for its rich cultural heritage, delicious cuisine, and bustling markets.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker12 = new mapboxgl.Marker()
+                .setLngLat([70.9874, 20.7144])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Diu</h6>
+                        <p>Diu, a small island off the coast of Gujarat, India, is a tranquil destination with pristine beaches, Portuguese architecture, and a laid-back vibe.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker13 = new mapboxgl.Marker()
+                .setLngLat([81.6296, 21.2514])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Raipur</h6>
+                        <p>Raipur is the capital city of the Indian state of Chhattisgarh, known for its rich cultural heritage, bustling markets, and delicious cuisine.</p>`
+                        )
+                )
+                .addTo(map);
+
+            const marker14 = new mapboxgl.Marker()
+                .setLngLat([24.628700, 72.751503])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(
+                            `<h6>Mount Abu</h6>
+                        <p>Raipur is the capital city of the Indian state of Chhattisgarh, known for its rich cultural heritage, bustling markets, and delicious cuisine.</p>`
+                        )
+                )
+                .addTo(map);
+
+        </script>
+        <%- include('partials/footer') %>
 </body>
+
 </html>
 </body>
+
 </html>
