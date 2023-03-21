@@ -24,7 +24,7 @@ let user = {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email });
+  res.render("home", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email,  });
 });
 
 app.get("/about", (req, res) => {
@@ -41,7 +41,7 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/profile", (req,res) => {
-  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email})
+  res.render("profile", { name: user.name.substring(0, user.name.indexOf(" ")), isLoggedIn: isLoggedIn, email: user.email, username: user.username, phonenumber: user.phonenumber, age: user.age })
 })
 
 let isLoggedIn = false
