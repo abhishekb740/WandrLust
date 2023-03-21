@@ -42,7 +42,7 @@
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
                         <input type="number" id="phonenumber" name="phonenumber" placeholder="Phone Number"
-                            minlength="10" maxlength="10" required />
+                            minlength="10" maxlength="10" required onchange={handlePhoneNumberValidation()} />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -63,7 +63,7 @@
                         <i class="fas fa-envelope"></i>
                         <input type="text" id="gender" name="gender" placeholder="Gender" />
                     </div>
-                    <input disabled type="submit" id="Signup" class="btn" value="Sign up" onclick={handleSubmitSignIn()} />
+                    <input type="submit" id="Signup" class="btn" value="Sign up" />
                 </form>
             </div>
         </div>
@@ -98,11 +98,12 @@
     <script>
         let regexEmail = /^[A-Za-z0-9_]+@[A-Za-z0-9.-]+$/
         let regexUsername = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/
+        let regexPhonenumber = /^[6-9]\d{9}$/
 
         const validateHandleUsername2 = () => {
             let username = document.getElementById("username2")
             if(!username.value.match(regexUsername)){
-                alert("Please enter valid username.")
+                alert("Please Enter Valid Username.")
                 username.value = "";
             }
         }
@@ -110,7 +111,7 @@
         const validateHandleUsername1 = () =>{
             let username = document.getElementById("username1")
             if(!username.value.match(regexUsername)){
-                alert("Please enter valid Email.")
+                alert("Please Enter Valid Email.")
                 username.value = "";
             }
         }
@@ -119,8 +120,16 @@
             let email = document.getElementById("email")
             console.log(email);
             if(!email.value.match(regexEmail)){
-                alert("Please enter valid Email.")
+                alert("Please Enter Valid Email.")
                 email.value = "";
+            }
+        }
+
+        const handlePhoneNumberValidation = () =>{
+            let phonenumber = document.getElementById("phonenumber")
+            if(!phonenumber.value.match(regexPhonenumber)){
+                alert("Please Enter Valid Phone Number of Length 10.")
+                phonenumber.value = "";
             }
         }
 
