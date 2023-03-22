@@ -105,25 +105,34 @@
                                         <i class="fas fa-user-circle text-decoration-none text-white fa-2x"></i>
                                     </div>
                                 </a>
-                                <ul class="dropdown-menu bg-black mt-3" aria-labelledby="dropdownMenuLink">
-                                    <a href="/profile" style="text-decoration: none">
-                                        <div class="profile dropdown-item text-white bg-transparent">
-                                            <div>
-                                                <%= username%>
+                                <ul class="dropdown-menu mt-3" aria-labelledby="dropdownMenuLink" style="background-color: #282b30;">
+                                    <a href="/profile" style="text-decoration: none;">
+                                        <div class="profile dropdown-item text-white bg-transparent"
+                                            style="display: flex; flex-direction: row; gap:1rem;">
+                                            <div style="color: gainsboro; padding-top: .5rem;">
+                                                <i class="far fa-user fa-2x"></i>
                                             </div>
                                             <div>
-                                                <%= email%>
+                                                <div style="color: gainsboro; font-size: 1rem;">
+                                                    <%=username%>
+                                                </div>
+                                                <div style="color: gainsboro; font-size: .9rem;">
+                                                    <%= email%>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
                                     <hr width="100%" color="white">
                                     <li>
-                                        <a class="dropdown-item text-white bg-transparent" href="/post">Upload Image</a>
+                                        <a class="dropdown-item text-white   bg-transparent" href="/post">Upload
+                                            Image</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item text-white bg-transparent" href="/budget">Budget Tracker</a>
+                                        <a class="dropdown-item text-white bg-transparent" href="/budget">Budget
+                                            Tracker</a>
                                     </li>
-                                    <li><a class="dropdown-item text-white bg-transparent" href="/login">Logout</a></li>
+                                    <li style="padding-bottom: .5rem"><a class="dropdown-item text-white bg-transparent"
+                                            href="/login">Logout</a></li>
                                 </ul>
                             </li>
                             <% } %>

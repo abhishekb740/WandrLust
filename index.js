@@ -69,10 +69,8 @@ app.post("/sendMail", (req, res) => {
   let mailOptions = {
     from: "vaibhav.pandey0806@gmail.com",
     to: email,
-    subject: "Wandrlust | Query Received",
-    text: `Name: ${name}
-           mail: ${email}, 
-           description:${message}`,
+    subject: "Query Received | Wandrlust",
+    text: `Hi, ${name}!\nWe have recieved your query and we'll be working on it and replying to you very soon!\n\nQuery: ${message}\nFrom: ${email}\n\n\nRegards,\nWandrlust Team`,
   }
   transporter.sendMail(mailOptions, (err, success) => {
     if (err) {
