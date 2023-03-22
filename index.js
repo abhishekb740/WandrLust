@@ -26,7 +26,7 @@ let user = {
 
 app.get("/", (req, res) => {
   res.render("home", {
-    name: user.name.substring(0, user.name.indexOf(" ")),
+    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", {
-    name: user.name.substring(0, user.name.indexOf(" ")),
+    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -48,7 +48,7 @@ app.get("/test", (req, res) => {
 
 app.get("/faq", (req, res) => {
   res.render("faq", {
-    name: user.name.substring(0, user.name.indexOf(" ")),
+    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -88,7 +88,7 @@ app.post("/sendMail", (req, res) => {
 app.get("/budget", (req, res) => {
   if (isLoggedIn) {
     res.render("budget", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
+      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -100,7 +100,7 @@ app.get("/budget", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact", {
-    name: user.name.substring(0, user.name.indexOf(" ")),
+    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -124,7 +124,7 @@ app.get("/profile", (req, res) => {
     });
   } else {
     res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
+      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -135,7 +135,7 @@ app.get("/profile", (req, res) => {
 app.get("/post",(req,res)=>{
   if(isLoggedIn){
     res.render("post", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
+      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -149,7 +149,7 @@ app.get("/post",(req,res)=>{
 app.get("/feed",(req,res)=>{
   if(isLoggedIn){
     res.render("feed",{
-      name: user.name.substring(0, user.name.indexOf(" ")),
+      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -163,7 +163,7 @@ app.get("/feed",(req,res)=>{
 app.get("/locations", (req, res) => {
   if (isLoggedIn) {
     res.render("locations", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
+      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
