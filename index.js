@@ -134,8 +134,32 @@ app.get("/profile", (req, res) => {
   }
 });
 
-app.get("/feed", (req, res) => {
-  res.render("feed")
+app.get("/post",(req,res)=>{
+  if(isLoggedIn){
+    res.render("post", {
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username,
+    })
+  }
+  else{
+    res.redirect("/")
+  }
+})
+
+app.get("/feed",(req,res)=>{
+  if(isLoggedIn){
+    res.render("feed",{
+      name: user.name.substring(0, user.name.indexOf(" ")),
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username,
+    })
+  }
+  else{
+    res.redirect("/")
+  }
 })
 
 app.get("/locations", (req, res) => {
@@ -158,6 +182,7 @@ app.post("/logout", (req, res) => {
   console.log(isLoggedIn);
   res.redirect("/");
 });
+
 
 app.post("/signin", async (req, res) => {
   console.log("SignIn");
