@@ -101,6 +101,10 @@ app.get("/profile", (req, res) => {
   }
 });
 
+app.get("/feed",(req,res)=>{
+  res.render("feed")
+})
+
 app.get("/locations", (req, res) => {
   if (isLoggedIn) {
     res.render("locations", {
