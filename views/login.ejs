@@ -24,7 +24,7 @@
                         <input type="password" id="password1" name="password" placeholder="Password" minlength="8"
                             required />
                     </div>
-                    <input type="submit" value="Login" class="btn solid" />
+                    <input type="submit" value="Login" class="btn solid"/>
                 </form>
                 <form id="signUpForm" class="sign-up-form" method="post" action="/signup">
                     <h2 class="title">Sign up</h2>
@@ -62,7 +62,7 @@
                         <i class="fas fa-envelope"></i>
                         <input type="text" id="gender" name="gender" placeholder="Gender" />
                     </div>
-                    <input type="submit" id="Signup" class="btn" value="Sign up" />
+                    <input type="submit" id="Signup" class="btn" value="Sign up"/>
                 </form>
             </div>
         </div>
@@ -96,13 +96,14 @@
     </div>
     <script>
         let regexEmail = /^[A-Za-z0-9_]+@[A-Za-z0-9.-]+$/
-        let regexUsername = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/
+        let regexUsername = /^[A-Za-z][A-Za-z0-9_]{7,29}$/
         let regexPhonenumber = /^[6-9]\d{9}$/
 
         const validateHandleUsername2 = () => {
             let username = document.getElementById("username2")
             if(!username.value.match(regexUsername)){
-                alert("Please Enter Valid Username.")
+                username.setCustomValidity("Please enter valid Username")
+                username.reportValidity();
                 username.value = "";
             }
         }
@@ -110,7 +111,8 @@
         const validateHandleUsername1 = () =>{
             let username = document.getElementById("username1")
             if(!username.value.match(regexUsername)){
-                alert("Please Enter Valid Email.")
+                username.setCustomValidity("Please enter valid Username")
+                username.reportValidity();
                 username.value = "";
             }
         }
@@ -119,7 +121,8 @@
             let email = document.getElementById("email")
             console.log(email);
             if(!email.value.match(regexEmail)){
-                alert("Please Enter Valid Email.")
+                email.setCustomValidity("Please enter valid Email")
+                email.reportValidity();
                 email.value = "";
             }
         }
@@ -127,10 +130,29 @@
         const handlePhoneNumberValidation = () =>{
             let phonenumber = document.getElementById("phonenumber")
             if(!phonenumber.value.match(regexPhonenumber)){
-                alert("Please Enter Valid Phone Number of Length 10.")
+                phonenumber.setCustomValidity("Please enter valid Phone Number")
+                phonenumber.reportValidity();
                 phonenumber.value = "";
             }
         }
+
+        // const signUpHandler = () =>{
+        //     try{
+        //         alert("Registered Successfully")
+        //     }
+        //     catch(err){
+        //         alert(err)
+        //     }
+        // }
+
+        // const signInHandler = () =>{
+        //     try{
+        //         alert("LoggedIn Successfully")
+        //     }
+        //     catch(err){
+        //         alert(err)
+        //     }
+        // }
 
         const sign_in_btn = document.querySelector("#sign-in-btn");
         const sign_up_btn = document.querySelector("#sign-up-btn");
