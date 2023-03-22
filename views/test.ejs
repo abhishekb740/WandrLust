@@ -1,0 +1,200 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link href="/PageCss/faq.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs', { name: name, isLoggedIn: isLoggedIn, email: email}); %>
+    <div style="margin-left: 35rem;">
+        <img src="/Gifs/108903-faqs.gif" height="40%" width="40%">
+    </div>
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-container">
+        <div class="faq">
+            <h3 class="faq-title">
+                Lorem ipsum dolor sit amet.
+            </h3>
+            <p class="faq-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nobis, repellat neque non
+                dicta
+                fugiat veritatis sit delectus perspiciatis quis?</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq active">
+            <h3 class="faq-title">
+                Lorem ipsum dolor sit amet.
+            </h3>
+            <p class="faq-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nobis, repellat neque non
+                dicta
+                fugiat veritatis sit delectus perspiciatis quis?</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Lorem ipsum dolor sit amet.
+            </h3>
+            <p class="faq-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nobis, repellat neque non
+                dicta
+                fugiat veritatis sit delectus perspiciatis quis?</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Lorem ipsum dolor sit amet.
+            </h3>
+            <p class="faq-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nobis, repellat neque non
+                dicta
+                fugiat veritatis sit delectus perspiciatis quis?</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+
+        <div class="faq">
+            <h3 class="faq-title">
+                Lorem ipsum dolor sit amet.
+            </h3>
+            <p class="faq-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod nobis, repellat neque non
+                dicta
+                fugiat veritatis sit delectus perspiciatis quis?</p>
+            <button class="faq-toggle">
+                <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+    </div>
+    <%- include('partials/footer') %>
+    <script>
+        console.log("Working");
+        const buttons = document.querySelectorAll(".faq-toggle");
+        console.log(buttons);
+        buttons.forEach((button) => {
+            button.addEventListener("click", () =>
+                button.parentElement.classList.toggle("active")
+            );
+        });
+
+    </script>
+</body>
+
+</html>
+
+
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --accent-color: #a876aa;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #eee;
+  color: #444;
+}
+
+h1 {
+  margin: 50px 0 30px;
+  text-align: center;
+  color: var(--accent-color);
+}
+
+.faq-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-bottom: 2rem;
+}
+
+.faq {
+  box-sizing: border-box;
+  background: transparent;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq:not(:first-child) {
+  border-top: 1px solid #e6e6e6;
+}
+
+.faq-title {
+  margin: 0 35px 0 0;
+  font-size: large;
+}
+
+.faq-text {
+  margin: 30px 0 0;
+  display: none;
+  line-height: 1rem;
+}
+
+.faq.active {
+  background-color: #f8f8f8;
+  box-shadow: inset 4px 0px 0px 0px var(--accent-color);
+}
+
+.faq.active .faq-title {
+  color: var(--accent-color);
+}
+
+.faq.active .faq-text {
+  display: block;
+}
+
+.faq-toggle {
+  background-color: transparent;
+  border: 1px solid #e6e6e6;
+  color: inherit;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding-top: 3px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 30px;
+  width: 30px;
+  transition: 0.3s ease;
+}
+
+.faq-toggle:focus {
+  outline: none;
+}
+
+.faq.active .faq-toggle {
+  transform: rotate(180deg);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #fff;
+} -->
+
+<!-- const buttons = document.querySelectorAll(".faq-toggle");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () =>
+    button.parentElement.classList.toggle("active")
+  );
+}); -->
+
