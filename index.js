@@ -28,26 +28,17 @@ app.get("/", (req, res) => {
     name: user.name.substring(0, user.name.indexOf(" ")),
     isLoggedIn: isLoggedIn,
     email: user.email,
-    username: user.username
+    username: user.username,
   });
 });
 
 app.get("/about", (req, res) => {
-  if (isLoggedIn) {
-    res.render("about", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
-  } else {
-    res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
-  }
+  res.render("about", {
+    name: user.name.substring(0, user.name.indexOf(" ")),
+    isLoggedIn: isLoggedIn,
+    email: user.email,
+    username: user.username,
+  });
 });
 
 app.get("/test", (req, res) => {
@@ -55,39 +46,34 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/faq", (req, res) => {
+  res.render("faq", {
+    name: user.name.substring(0, user.name.indexOf(" ")),
+    isLoggedIn: isLoggedIn,
+    email: user.email,
+    username: user.username,
+  });
+});
+
+app.get("/budget", (req, res) => {
   if (isLoggedIn) {
-    res.render("faq", {
+    res.render("budget", {
       name: user.name.substring(0, user.name.indexOf(" ")),
       isLoggedIn: isLoggedIn,
       email: user.email,
-      username: user.username
+      username: user.username,
     });
   } else {
-    res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
+    res.redirect("/");
   }
 });
 
 app.get("/contact", (req, res) => {
-  if (isLoggedIn) {
-    res.render("contact", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
-  } else {
-    res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
-  }
+  res.render("contact", {
+    name: user.name.substring(0, user.name.indexOf(" ")),
+    isLoggedIn: isLoggedIn,
+    email: user.email,
+    username: user.username,
+  });
 });
 
 app.get("/login", (req, res) => {
@@ -110,7 +96,7 @@ app.get("/profile", (req, res) => {
       name: user.name.substring(0, user.name.indexOf(" ")),
       isLoggedIn: isLoggedIn,
       email: user.email,
-      username: user.username
+      username: user.username,
     });
   }
 });
@@ -121,15 +107,10 @@ app.get("/locations", (req, res) => {
       name: user.name.substring(0, user.name.indexOf(" ")),
       isLoggedIn: isLoggedIn,
       email: user.email,
-      username: user.username
+      username: user.username,
     });
   } else {
-    res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")),
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username
-    });
+    res.redirect("/")
   }
 });
 
