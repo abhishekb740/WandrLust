@@ -74,8 +74,6 @@ app.post("/sendMail", (req, res) => {
            mail: ${email}, 
            description:${message}`,
   }
-
-  const error = "";
   transporter.sendMail(mailOptions, (err, success) => {
     if (err) {
       console.log("Mail not sent.", err)
