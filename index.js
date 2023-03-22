@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 var bodyParser = require("body-parser");
 const relation = require("./Models/sqlite");
+const nodemailer = require('nodemailer');
 const app = express();
 const db = relation.connect();
 relation.createTable(db);
@@ -54,6 +55,38 @@ app.get("/faq", (req, res) => {
   });
 });
 
+app.post("/sendMail", (req, res) => {
+  const {name, email, message} = req.body;
+  console.log(name, email, message);
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "vaibhav.pandey0806@gmail.com",
+      pass: "farimahhzsrpxeff"
+    }
+  })
+
+  let mailOptions = {
+    from: "vaibhav.pandey0806@gmail.com",
+    to: "vaibhav.pandey0806@gmail.com",
+    subject: "Verified!!",
+    text: `Name: ${name}
+           mail: ${email}, 
+           description:${message}`,
+  }
+
+  const error = "";
+  transporter.sendMail(mailOptions, (err, success) => {
+    if (err) {
+      console.log("Mail not sent.", err)
+    }
+    else {
+      console.log("Success, email has been sent, and your account has been verified!!", success)
+    }
+  })
+  res.redirect('/contact')
+});
+
 app.get("/budget", (req, res) => {
   if (isLoggedIn) {
     res.render("budget", {
@@ -101,7 +134,7 @@ app.get("/profile", (req, res) => {
   }
 });
 
-app.get("/feed",(req,res)=>{
+app.get("/feed", (req, res) => {
   res.render("feed")
 })
 
