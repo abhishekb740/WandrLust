@@ -143,15 +143,14 @@
                     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
                         <div class="d-flex justify-content-center align-items-center h-100">
                             <div class="text-white text-center">
-                                <h1 class="mb-3">Wandrlust awaits
+                                <h1 class="mb-3">
                                     <% if( isLoggedIn ){ %>
-                                        ,
+                                        Wandrlust awaits,
                                         <span>
-                                            <%=name%>   
+                                            <%=name%>
                                         </span>
                                         <% } else{ %>
-                                            <div>You</div>
-                                            <div>Please Login</div>
+                                            Wandrlust awaits
                                             <% } %>
                                 </h1>
                                 <h5 class="mb-4">Start your journey with us today!</h5>
@@ -204,27 +203,34 @@
                             <div class="text-white text-center">
                                 <h1 class="mb-3">Where adventure meets affordability</h1>
                                 <h5 class="mb-4">Explore more, worry less with our travel expertise</h5>
-                                <a class="btn btn-outline-light btn-lg m-2" href="/contact" role="button"
-                                    rel="nofollow">
-                                    Contact us
-                                </a>
-                                <a class="btn btn-outline-light btn-lg m-2" href="/faq" role="button" rel="nofollow">
-                                    FAQ
-                                </a>
+                                <% if( isLoggedIn ){ %>
+                                    <a class="btn btn-outline-light btn-lg m-2" href="/budget" role="button"
+                                        rel="nofollow">
+                                        Budget Tracker
+                                    </a>
+                                    <% } %>
+                                        <% if( !isLoggedIn ){ %>
+                                            <a class="btn btn-outline-light btn-lg m-2" href="/login" role="button"
+                                                rel="nofollow" target="_self">Sign up</a>
+                                            <a class="btn btn-outline-light btn-lg m-2" href="/login" target="_self"
+                                                role="button">Log
+                                                in</a>
+                                            <% } %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Inner -->
+        </div>
+        <!-- Inner -->
 
-            <!-- Controls -->
-            <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
-                <span class="fa fa-chevron-left fa-2x" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
-                <span class="fas fa-chevron-right fa-2x" aria-hidden="true"></span>
-            </a>
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+            <span class="fa fa-chevron-left fa-2x" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+            <span class="fas fa-chevron-right fa-2x" aria-hidden="true"></span>
+        </a>
         </div>
         <!-- Carousel wrapper -->
     </header>
