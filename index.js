@@ -8,7 +8,7 @@ const db = relation.connect();
 relation.createTable(db);
 
 app.use(express.static(path.join(__dirname, "public")));
-var PORT = process.env.PORT || 6969;
+var PORT = process.env.PORT || 3000;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.json());
