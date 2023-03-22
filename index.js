@@ -68,8 +68,8 @@ app.post("/sendMail", (req, res) => {
 
   let mailOptions = {
     from: "vaibhav.pandey0806@gmail.com",
-    to: "vaibhav.pandey0806@gmail.com",
-    subject: "Verified!!",
+    to: email,
+    subject: "Wandrlust | Query Received",
     text: `Name: ${name}
            mail: ${email}, 
            description:${message}`,
