@@ -26,7 +26,7 @@ let user = {
 
 app.get("/", (req, res) => {
   res.render("home", {
-    name: user.name.substring(0, user.name.indexOf(" ")),
+    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
