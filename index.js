@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 var bodyParser = require("body-parser");
 const relation = require("./Models/sqlite");
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 const app = express();
 const db = relation.connect();
 relation.createTable(db);
@@ -26,7 +26,9 @@ let user = {
 
 app.get("/", (req, res) => {
   res.render("home", {
-    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+    name: user.name.substring(0, user.name.indexOf(" "))
+      ? user.name.substring(0, user.name.indexOf(" "))
+      : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -35,7 +37,9 @@ app.get("/", (req, res) => {
 
 app.get("/about", (req, res) => {
   res.render("about", {
-    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+    name: user.name.substring(0, user.name.indexOf(" "))
+      ? user.name.substring(0, user.name.indexOf(" "))
+      : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -48,7 +52,9 @@ app.get("/test", (req, res) => {
 
 app.get("/faq", (req, res) => {
   res.render("faq", {
-    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+    name: user.name.substring(0, user.name.indexOf(" "))
+      ? user.name.substring(0, user.name.indexOf(" "))
+      : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -56,37 +62,41 @@ app.get("/faq", (req, res) => {
 });
 
 app.post("/sendMail", (req, res) => {
-  const {name, email, message} = req.body;
+  const { name, email, message } = req.body;
   console.log(name, email, message);
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "vaibhav.pandey0806@gmail.com",
-      pass: "farimahhzsrpxeff"
-    }
-  })
+      pass: "farimahhzsrpxeff",
+    },
+  });
 
   let mailOptions = {
     from: "vaibhav.pandey0806@gmail.com",
     to: email,
     subject: "Query Received | Wandrlust",
     text: `Hi, ${name}!\nWe have recieved your query and we'll be working on it and replying to you very soon!\n\nQuery: ${message}\nFrom: ${email}\n\n\nRegards,\nWandrlust Team`,
-  }
+  };
   transporter.sendMail(mailOptions, (err, success) => {
     if (err) {
-      console.log("Mail not sent.", err)
+      console.log("Mail not sent.", err);
+    } else {
+      console.log(
+        "Success, email has been sent, and your account has been verified!!",
+        success
+      );
     }
-    else {
-      console.log("Success, email has been sent, and your account has been verified!!", success)
-    }
-  })
-  res.redirect('/contact')
+  });
+  res.redirect("/contact");
 });
 
 app.get("/budget", (req, res) => {
   if (isLoggedIn) {
     res.render("budget", {
-      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+      name: user.name.substring(0, user.name.indexOf(" "))
+        ? user.name.substring(0, user.name.indexOf(" "))
+        : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -98,7 +108,9 @@ app.get("/budget", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact", {
-    name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+    name: user.name.substring(0, user.name.indexOf(" "))
+      ? user.name.substring(0, user.name.indexOf(" "))
+      : user.name,
     isLoggedIn: isLoggedIn,
     email: user.email,
     username: user.username,
@@ -122,7 +134,9 @@ app.get("/profile", (req, res) => {
     });
   } else {
     res.render("home", {
-      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+      name: user.name.substring(0, user.name.indexOf(" "))
+        ? user.name.substring(0, user.name.indexOf(" "))
+        : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
@@ -130,44 +144,48 @@ app.get("/profile", (req, res) => {
   }
 });
 
-app.get("/post",(req,res)=>{
-  if(isLoggedIn){
-    res.render("post", {
-      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username,
-    })
-  }
-  else{
-    res.redirect("/")
-  }
-})
-
-app.get("/feed",(req,res)=>{
-  if(isLoggedIn){
-    res.render("feed",{
-      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
-      isLoggedIn: isLoggedIn,
-      email: user.email,
-      username: user.username,
-    })
-  }
-  else{
-    res.redirect("/")
-  }
-})
-
-app.get("/locations", (req, res) => {
+app.get("/post", (req, res) => {
   if (isLoggedIn) {
-    res.render("locations", {
-      name: user.name.substring(0, user.name.indexOf(" ")) ? user.name.substring(0, user.name.indexOf(" ")) : user.name,
+    res.render("post", {
+      name: user.name.substring(0, user.name.indexOf(" "))
+        ? user.name.substring(0, user.name.indexOf(" "))
+        : user.name,
       isLoggedIn: isLoggedIn,
       email: user.email,
       username: user.username,
     });
   } else {
-    res.redirect("/")
+    res.redirect("/");
+  }
+});
+
+app.get("/feed", (req, res) => {
+  if (isLoggedIn) {
+    res.render("feed", {
+      name: user.name.substring(0, user.name.indexOf(" "))
+        ? user.name.substring(0, user.name.indexOf(" "))
+        : user.name,
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username,
+    });
+  } else {
+    res.redirect("/");
+  }
+});
+
+app.get("/locations", (req, res) => {
+  if (isLoggedIn) {
+    res.render("locations", {
+      name: user.name.substring(0, user.name.indexOf(" "))
+        ? user.name.substring(0, user.name.indexOf(" "))
+        : user.name,
+      isLoggedIn: isLoggedIn,
+      email: user.email,
+      username: user.username,
+    });
+  } else {
+    res.redirect("/");
   }
 });
 
@@ -179,7 +197,6 @@ app.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-
 app.post("/signin", async (req, res) => {
   console.log("SignIn");
   console.log(req.body);
@@ -189,6 +206,8 @@ app.post("/signin", async (req, res) => {
     if (err) {
       console.log(err.message);
     }
+    console.log("Row Printed " + row);
+    console.log(row.username);
     if (row) {
       let pass_correct = row.password;
       if (pass_correct == password) {
@@ -229,15 +248,15 @@ app.post("/signup", async (req, res) => {
         if (err) {
           console.error(err.message);
         }
-        exist = row;
+        exist = !!row;
         return exist;
       }
     );
   };
   exist = await checkAccountIfExists(username);
-  console.log(exist);
 
   if (exist) {
+    console.log("Account Username");
     res.send("Account Already Exists!!");
   } else if (!exist) {
     db.run(

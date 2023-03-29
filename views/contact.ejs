@@ -176,7 +176,8 @@
                     </div>
                     <div class="form-details">
                         <input type="text" name="name" id="name" placeholder="Name" required>
-                        <input type="email" name="email" id="email" placeholder="Email" required>
+                        <input type="email" onchange={validateEmail()} name="email" id="email" placeholder="Email"
+                            required>
                         <textarea name="message" id="message" cols="52" rows="7" placeholder="Message"
                             required></textarea>
                         <button type="submit">SEND MESSAGE</button>
@@ -185,6 +186,16 @@
             </form>
         </div>
         <%- include('partials/footer') %>
+            <script>
+                let regexEmail = /^[A-Za-z0-9._]+@[A-Za-z]+[.][A-Za-z]+$/
+                const validateEmail = () => {
+                    let email = document.getElementById("email")
+                    if (!email.value.match(regexEmail)) {
+                        alert("Please enter valid Email")
+                        email.value = "";
+                    }
+                }
+            </script>
 </body>
 
 </html>

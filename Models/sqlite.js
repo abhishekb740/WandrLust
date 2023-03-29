@@ -11,11 +11,12 @@ exports.connect = () => {
 };
 
 exports.createTable = (db) => {
-  db.run(`create table if not exists account
+  db.run(
+    `create table if not exists account
     (
-        name        varchar(320) not null,
-        email       varchar(30)  not null,
-        phonenumber long integer not null,
+        name        varchar(50) not null,
+        email       varchar(30) not null unique,
+        phonenumber long integer not null unique,
         username    varchar(30)  not null
             constraint account_pk
                 primary key,
@@ -23,14 +24,13 @@ exports.createTable = (db) => {
         password    varchar(30)  not null,
         age         integer      not null,
         gender      varchar(10)
-    );`,(error)=>{
-        if(error){
-            console.log(error);
-        }
-        else{
-            console.log("Account Table created Successfully");
-        }
-    });
+    );`,
+    (error) => {
+      if (error) {
+        res.status(500).send("Something broke!");
+      } else {
+        console.log("Account Table created Successfully");
+      }
+    }
+  );
 };
-
-
