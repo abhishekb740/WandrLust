@@ -222,7 +222,14 @@ app.post("/signin", async (req, res) => {
         console.log(user);
         res.redirect("/");
       } else {
-        res.send("Incorrect Password!");
+        res.render("error", {
+          name: user.name.substring(0, user.name.indexOf(" "))
+              ? user.name.substring(0, user.name.indexOf(" "))
+              : user.name,
+          isLoggedIn: isLoggedIn,
+          email: user.email,
+          username: user.username,
+        });
       }
     }
   });
@@ -271,7 +278,7 @@ app.post("/signup", async (req, res) => {
     user.gender = req.body.gender;
     console.log(user);
   }
-  isLoggedIn = true;
+
   res.redirect("/login");
 });
 

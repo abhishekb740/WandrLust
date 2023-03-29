@@ -11,11 +11,10 @@
 </head>
 
 <body>
-    <%- include('partials/navbar.ejs', { name: name, isLoggedIn: isLoggedIn, email: email}); %>
         <div class="container u-full-width">
-            <h2>Budget Tracker</h2>
+            <h2 style="color: #f91942">Budget Tracker</h2>
             <form id="shopping-form">
-                <div class="row">
+                <div class="r   ow">
                     <div class="ten columns">
                         <label for="item">Shopping List Item</label>
                         <input class="u-full-width" id="item" placeholder="New Item">
@@ -41,7 +40,6 @@
                     </tr>
                 </table>
         </div>
-        <%- include('partials/footer') %>
             <script>
                 const form = document.getElementById('shopping-form');
                 const item = document.getElementById('item');
